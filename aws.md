@@ -27,3 +27,10 @@ aws ec2 describe-spot-fleet-requests \
 aws s3api list-objects --bucket "bucket_name" \
    --query 'Contents[?LastModified>=`2020-07-16`][].{Key:Key}'
 ```
+
+### List public IPs used by EC2
+```
+aws ec2 describe-instances \
+   --query "Reservations[*].Instances[*].PublicIpAddress" \
+   --output text
+```
