@@ -21,3 +21,9 @@ aws ec2 describe-instances \
 aws ec2 describe-spot-fleet-requests \
    --query 'SpotFleetRequestConfigs[*].[SpotFleetRequestId, SpotFleetRequestConfig.ValidUntil]'
 ```
+
+### Find all files modified in a bucket since a date
+```
+aws s3api list-objects --bucket "bucket_name" \
+   --query 'Contents[?LastModified>=`2020-07-16`][].{Key:Key}'
+```
